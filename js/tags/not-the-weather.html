@@ -1,8 +1,30 @@
 <not-the-weather>
+  <!--html at top-->
+
   <div class = "container">
     <form name = "getTheWeatherForm">
-      <input type = "text" placeholder = "type a location, zip, or city" onchange = {getWeather }/>
+      <input type = "text" placeholder = "city, country" name = "place" onchange = { getPlace }/>
     </form>
   </div>
+
+  <!--now for some JS-->
+  <script>
+  var where = '';
+
+  getPlace = function(place){
+    place = this.place.value;
+    place = place.toUpper().replace("usa", "us").replace(" ", "");
+    where = place;
+    return where;
+  }
+
+    getWeather = function(place){
+      var req = new XMLHttpRequest();
+      req.open("get", "http://api.openweathermap.org/data/2.5/weather?zip=" + zip +",us&units=imperial&APPID=5194556d508058f5c7a03fec4d5b05f0")
+      promise = new Promise(function(resolve, reject){
+
+      })
+    }
+  </script>
 
 </not-the-weather>
