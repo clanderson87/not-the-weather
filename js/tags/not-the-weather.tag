@@ -30,7 +30,11 @@
           if (response.status !== 200){
             console.log("You broke something: " + response.status);
           } else {
-            console.log("This happened!: " + response)
+            console.log("API is okaly-dokaly. Parsing promise reponse now!")
+            response.json().then(function(data){
+              dataString = JSON.stringify(data);
+              console.log("parsed data is: " + dataString);
+              })
             //makeupWeather(response.json)
           }
         })
