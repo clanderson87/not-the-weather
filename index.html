@@ -8,9 +8,14 @@
 </head>
 <body>
   <!--declare any components here-->
+  <not-the-weather></not-the-weather>
 
-  <script src="/lib/bower_components/riot/riot+compiler.min.js" type="text/javascript" charset="utf-8" async></script>
+  <script src="/lib/bower_components/riot/riot+compiler.min.js" type="text/javascript" charset="utf-8"></script>
   <!--add and mount any riotgear elements you want to use here-->
+  <script src = "/js/tags/not-the-weather.tag" type = "riot/tag"></script>
+  <script>
+    riot.mount('not-the-weather')
+  </script>
 
   <script src="/js/app.js" type="text/javascript" charset="utf-8" async defer></script>
 </body>
