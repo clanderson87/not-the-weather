@@ -13,20 +13,25 @@
     var where = '';
 
     getPlace = function(place){
-      place = this.place.value;
-      place = place.toUpper().replace("usa", "us").replace(" ", "");
+      console.log("place is: " + place);
+      place = this.place.value.toString();
+      console.log("Now place is: " + place)
+      place = place.toLowerCase().replace("usa", "us").replace(" ", "");
       where = place;
-      return where;
+      console.log("where is: " + where)
+      getWeather(where.toString())
+
     }
 
     getWeather = function(place){
+      console.log("getWeather entered with: " + place)
       fetch("http://api.openweathermap.org/data/2.5/forecast?q=" + place +"&mode=json&units=imperial&APPID=5194556d508058f5c7a03fec4d5b05f0")
         .then(function(response){
           if (response.status !== 200){
             console.log("You broke something: " + response.status);
           } else {
-            console.log("This happened!: " + response.json())
-            makeupWeather(response.json)
+            console.log("This happened!: " + response)
+            //makeupWeather(response.json)
           }
         })
     }
