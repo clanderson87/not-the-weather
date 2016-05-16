@@ -18,12 +18,9 @@
     return where;
   }
 
-    getWeather = function(place){
-      var req = new XMLHttpRequest();
-      req.open("get", "http://api.openweathermap.org/data/2.5/weather?zip=" + zip +",us&units=imperial&APPID=5194556d508058f5c7a03fec4d5b05f0")
-      promise = new Promise(function(resolve, reject){
-
-      })
+  getWeather = function(place){
+    fetch("http://api.openweathermap.org/data/2.5/forecast?q=" + place +"&mode=json&units=imperial&APPID=5194556d508058f5c7a03fec4d5b05f0")
+    promise = new Promise(function(resolve, reject){})
     }
   </script>
 
