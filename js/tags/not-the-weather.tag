@@ -14,9 +14,9 @@
 
     getPlace = function(place){
       console.log("place is: " + place);
-      place = this.place.value.toString();
+      var place = this.place.value.toString();
       console.log("Now place is: " + place)
-      place = place.toLowerCase().replace("usa", "us").replace(" ", "");
+      var place = place.toLowerCase().replace("usa", "us").replace(" ", "");
       where = place;
       console.log("where is: " + where)
       getWeather(where.toString())
@@ -32,12 +32,21 @@
           } else {
             console.log("API is okaly-dokaly. Parsing promise reponse now!")
             response.json().then(function(data){
-              dataString = JSON.stringify(data);
-              console.log("parsed data is: " + dataString);
+              var dataString = JSON.stringify(data);
+              //console.log("parsed data is: " + dataString);
+              makeUpWeather(dataString);
               })
-            //makeupWeather(response.json)
           }
         })
+    }
+
+    makeUpWeather = function(forecast){
+      //console.log("forecast being passed to makeUpWeather is: " + forecast);
+      var parsedForecast = JSON.parse(forecast);
+      console.log("parsedForecast is: " + parsedForecast);
+      var time = parsedForecast.list[0].dt;
+      console.log(time);
+
     }
   </script>
 
