@@ -44,10 +44,11 @@
       //console.log("forecast being passed to makeUpWeather is: " + forecast);
       var parsedForecast = JSON.parse(forecast);
       console.log("parsedForecast is: " + parsedForecast);
-      var time = parsedForecast.list[0].dt;
+      var time = parsedForecast.list;
       console.log(time);
 
     }
+
   </script>
 
 </not-the-weather>
