@@ -3,14 +3,23 @@
 
   <div class = "container">
     <form name = "getTheWeatherForm">
-      <input type = "text" placeholder = "city, country" name = "place" onchange = { getPlace }/>
+      <input type = "text" placeholder = "city, country" name = "place" onchange = { getPlace }>
     </form>
   </div>
 
   <!--now for some JS-->
 
   <script>
+
     var where = '';
+    var now = new Date();
+    function madeUpWeather(){
+      this.weather = '',
+      this.temp = 0,
+      this.wind ='',
+      this.precip = ''
+    };
+    var madeUpWeatherArray = [];
 
     getPlace = function(place){
       console.log("place is: " + place);
@@ -42,13 +51,32 @@
 
     makeUpWeather = function(forecast){
       //console.log("forecast being passed to makeUpWeather is: " + forecast);
+      var falseWeather = null;
       var parsedForecast = JSON.parse(forecast);
-      console.log("parsedForecast is: " + parsedForecast);
-      var time = parsedForecast.list;
-      console.log(time);
-
-    }
-
+      console.log("parsedForecast.list is:");
+      console.log(parsedForecast.list);
+      parsedForecast.list.forEach(function(object){
+        falseWeather = new madeUpWeather();
+        switch(object.weather.description){
+          case "clear sky":
+            falseWeather.weather = 'Rain'
+            break;
+          case "few clouds":
+            falseWeather.weather = 'Severe Storms'
+            break;
+          case "light rain":
+            falseWeather.weather = 'Flurries'
+            break;
+          case "scattered clouds":
+            falseWeather.weather = 'Overcast'
+            break;
+          case "overcast clouds":
+            falseWeather.weather = 'Clear Sky'
+            break;
+          console.log(falseWeather);
+        }
+    })
+}
   </script>
 
 </not-the-weather>
