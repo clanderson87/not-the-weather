@@ -57,26 +57,46 @@
       console.log(parsedForecast.list);
       parsedForecast.list.forEach(function(object){
         falseWeather = new madeUpWeather();
-        switch(object.weather.description){
+        var temp = object.main.temp;
+        var realWeather = object.weather[0].description;
+        switch(realWeather) {
           case "clear sky":
-            falseWeather.weather = 'Rain'
+            falseWeather.weather = 'Rain';
+            falseWeather.temp = temp - 19;
             break;
           case "few clouds":
-            falseWeather.weather = 'Severe Storms'
+            falseWeather.weather = 'Overcast';
+            falseWeather.temp = temp - 16;
             break;
           case "light rain":
-            falseWeather.weather = 'Flurries'
+            falseWeather.weather = 'Thunderstorms';
+            falseWeather.temp = temp - 10;
             break;
           case "scattered clouds":
-            falseWeather.weather = 'Overcast'
+            falseWeather.weather = 'Severe Weather Alert';
+            falseWeather.temp = temp - 22;
             break;
           case "overcast clouds":
-            falseWeather.weather = 'Clear Sky'
+            falseWeather.weather = 'Clear Sky';
+            falseWeather.temp = temp + 16;
             break;
-          console.log(falseWeather);
+          case "heavy intensity rain":
+            falseWeather.weather = 'Sunny';
+            falseWeather.temp = temp + 22;
+            break;
+          case "moderate rain":
+            falseWeather.weather = 'Few Clouds';
+            falseWeather.temp = temp + 14;
+            break;
+          case "broken clouds":
+            falseWeather.weather = 'Scattered Showers';
+            falseWeather.temp = temp + 11;
+            break;
         }
+        console.log(falseWeather);
     })
-}
+  }
+
   </script>
 
 </not-the-weather>
