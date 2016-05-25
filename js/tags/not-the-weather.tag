@@ -3,11 +3,10 @@
 
   <div class = "container">
     <form name = "getTheWeatherForm">
-      <input type = "text" placeholder = "city, country" name = "place" onchange = { getPlace }>
+      <input type = "text" placeholder = "city, country" name = "place" onchange = { getPlace }/>
     </form>
-
-    <ul if = { madeUpWeatherArray.length } >
-      <li each = { madeUpWeatherArray }> { weather } </li>
+    <ul if = { madeUpWeatherArray.length > 0 }>
+      <li each = "{ lie in madeUpWeatherArray }" name = "{ lie.weather }">{ lie.weather }, { lie.temp }<li>
     </ul>
 
   </div>
@@ -16,14 +15,14 @@
 
   <script>
 
-    var vm = this;
     var where = '';
     var now = new Date();
     function madeUpWeather(){
       this.weather = '',
       this.temp = 0
     };
-    vm.madeUpWeatherArray = [];
+    madeUpWeatherArray = [];
+    this.madeUpWeatherArray = madeUpWeatherArray;
 
     getPlace = function(place){
       var place = this.place.value.toString();
@@ -92,10 +91,16 @@
             break;
       }
       console.log(falseWeather);
-      vm.madeUpWeatherArray.push(falseWeather);
-      console.log(vm.madeUpWeatherArray);
+      madeUpWeatherArray.push(falseWeather);
+      console.log(this.madeUpWeatherArray);
     }
+    update();
   }
+
+  update = function(){
+    riot.update();
+  }
+
   </script>
 
 </not-the-weather>
