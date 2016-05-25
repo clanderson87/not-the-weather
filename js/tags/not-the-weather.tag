@@ -5,6 +5,8 @@
     <form name = "getTheWeatherForm">
       <input type = "text" placeholder = "city, country" name = "place" onchange = { getPlace }>
     </form>
+
+    <div class = "weather-list" if =>
   </div>
 
   <!--now for some JS-->
@@ -15,9 +17,7 @@
     var now = new Date();
     function madeUpWeather(){
       this.weather = '',
-      this.temp = 0,
-      this.wind ='',
-      this.precip = ''
+      this.temp = 0
     };
     var madeUpWeatherArray = [];
 
@@ -55,7 +55,8 @@
       var parsedForecast = JSON.parse(forecast);
       console.log("parsedForecast.list is:");
       console.log(parsedForecast.list);
-      parsedForecast.list.forEach(function(object){
+      for(var i = 0; i < 3; i++){
+        var object = parsedForecast.list[i];
         falseWeather = new madeUpWeather();
         var temp = object.main.temp;
         var realWeather = object.weather[0].description;
@@ -92,11 +93,11 @@
             falseWeather.weather = 'Scattered Showers';
             falseWeather.temp = temp + 11;
             break;
-        }
-        console.log(falseWeather);
-    })
+          madeUpWeatherArray.push(falseWeather);
+      }
+    }
+    )
   }
-
   </script>
 
 </not-the-weather>
