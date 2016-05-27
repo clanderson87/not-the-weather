@@ -111,7 +111,8 @@
     weather = this.madeUpWeatherArray[0].weather;
   }
 
-  </script>
+  </script/>
+  <style>
+  </style/>
 
-
-</not-the-weather>
+</not-the-weather/>
