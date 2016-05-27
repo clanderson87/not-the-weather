@@ -53,6 +53,7 @@
       var parsedForecast = JSON.parse(forecast);
       for(var i = 0; i < 3; i++){
         var object = parsedForecast.list[i];
+        console.log("object is: ", object)
         falseWeather = new madeUpWeather();
         var temp = object.main.temp;
         var realWeather = object.weather[0].description;
@@ -105,8 +106,7 @@
   bgImg = function (id, loc) {
     /*id is the element id of the background that needs to change
     loc is the url of the actual img*/
-    loc = loc.replace(' ', '').toLowerCase();
-    loc = '/assets/' +loc + '.jpg';
+    loc = '/assets/' + loc.replace(/\s/g, '').toLowerCase() + '.jpg';
     console.log("loc is now: " + loc);
    return document.getElementById(id).style.backgroundImage = "url(" + loc +")";
   }
