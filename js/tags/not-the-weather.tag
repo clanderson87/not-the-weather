@@ -1,7 +1,7 @@
 <not-the-weather>
   <!--html at top-->
 
-  <div class = "container">
+  <div class = "container" id = "weather">
     <form name = "getTheWeatherForm">
       <input type = "text" placeholder = "city, country" name = "place" onchange = { getPlace }/>
     </form>
@@ -11,7 +11,7 @@
 
   </div>
 
-  //<!--now for some JS-->
+  <!--now for some JS-->
 
   <script>
 
@@ -95,6 +95,7 @@
       console.log(this.madeUpWeatherArray);
     }
     update();
+    bgImg('weather', this.madeUpWeatherArray[0].weather);
   }
 
   update = function(){
@@ -104,15 +105,16 @@
   bgImg = function (id, loc) {
     /*id is the element id of the background that needs to change
     loc is the url of the actual img*/
-   return document.getElementById(id).style.backgroundImage(url(loc));
+    loc = loc.replace(' ', '').toLowerCase();
+    loc = '/assets/' +loc + '.jpg';
+    console.log("loc is now: " + loc);
+   return document.getElementById(id).style.backgroundImage = "url(" + loc +")";
   }
 
   updateStyles = function(weather){
     weather = this.madeUpWeatherArray[0].weather;
   }
 
-  </script/>
-  <style>
-  </style/>
+  </script>
 
-</not-the-weather/>
+</not-the-weather>
