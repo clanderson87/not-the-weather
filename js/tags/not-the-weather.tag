@@ -101,6 +101,17 @@
     riot.update();
   }
 
+  bgImg = function (id, loc) {
+    /*id is the element id of the background that needs to change
+    loc is the url of the actual img*/
+   return document.getElementById(id).style.backgroundImage(url(loc));
+  }
+
+  updateStyles = function(weather){
+    weather = this.madeUpWeatherArray[0].weather;
+  }
+
   </script>
+
 
 </not-the-weather>
