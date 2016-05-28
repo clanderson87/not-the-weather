@@ -6,7 +6,7 @@
       <input type = "text" placeholder = "city, country" name = "place" onchange = { getPlace }/>
     </form>
     <ul if = { madeUpWeatherArray.length > 0 }>
-      <li each = "{ lie in madeUpWeatherArray }" name = "{ lie.weather }">{ lie.weather }, { lie.temp }<li>
+      <li each = "{ lie in madeUpWeatherArray }" name = "{ lie.weather }">{ lie.weather.toLowerCase() }, { lie.temp }<li>
     </ul>
 
   </div>
@@ -55,12 +55,13 @@
         var object = parsedForecast.list[i];
         console.log("object is: ", object)
         falseWeather = new madeUpWeather();
-        var temp = object.main.temp;
+        var temp = Math.floor(object.main.temp);
         var realWeather = object.weather[0].description;
         switch(realWeather) {
           case "clear sky":
             falseWeather.weather = 'Rain';
             falseWeather.temp = temp - 19;
+            //[STRETCH-FEATURE]these temp values are arbitrary. When I have more time, I should write a function to calculate and randomize an optimum 'uncomfortable' temp.
             break;
           case "few clouds":
             falseWeather.weather = 'Overcast';
@@ -94,6 +95,9 @@
       console.log(falseWeather);
       madeUpWeatherArray.push(falseWeather);
       console.log(this.madeUpWeatherArray);
+      if (this.madeUpWeatherArray.length > 3){
+        this.madeUpWeatherArray.shift();
+      }
     }
     update();
     bgImg('weather', this.madeUpWeatherArray[0].weather);
@@ -126,6 +130,25 @@
       align-items: center;
       border-radius: 25px
     }
+    
+    input {
+      width: 100%;
+      border-radius: 4px;
+      margin-top: 10%;
+    }
+    
+    ul {
+      padding: 0;
+    }
+    
+    ul > li {
+      list-style: none;
+      color: white;
+      text-border: black; 
+      font-family: sans-serif;
+      text-align: center;
+    }
+      
   </style>
 
 </not-the-weather>
