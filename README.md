@@ -1,4 +1,4 @@
-#not-the Weather
+#not-the-weather
 ##this isn't the weather.
 
 It's exactly the opposite, in fact.
