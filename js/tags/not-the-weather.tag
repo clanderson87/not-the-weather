@@ -116,5 +116,16 @@
   }
 
   </script>
+  
+  <!--lets make this pretty -->
+  <style>
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 25px
+    }
+  </style>
 
 </not-the-weather>
